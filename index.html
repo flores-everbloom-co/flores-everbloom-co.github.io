@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!-- SEO Tags -->
+    <meta name="description" content="Floristería Everbloom: Arreglos florales artesanales en Bogotá. Elegancia, romanticismo y estilo minimalista. Compra en línea y sorprende con flores naturales y eternas."/>
+    <meta name="keywords" content="floristería, flores, arreglos florales, flores naturales, flores eternas, Bogotá, Everbloom, arreglos sorpresa, graduaciones"/>
+    <meta name="author" content="Floristería Everbloom"/>
+
+    <title>Floristería Everbloom</title>
+
+    <!-- Styles -->
+    <style>
+        :root {
+            --color-bg: #ffffff;
+            --color-primary: #94b49f; /* Verde claro pastel */
+            --color-secondary: #d7e3d4; /* Otro tono suave verde pastel */
+            --color-accent: #f2ebe9; /* Tono crema suave */
+            --color-text: #333333;
+            --color-heading: #444444;
+            --font-heading: 'Georgia', serif;
+            --font-body: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--color-bg);
+            font-family: var(--font-body);
+            color: var(--color-text);
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            background-color: var(--color-bg);
+            z-index: 999;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+        }
+
+        header .logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--color-heading);
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--color-text);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--color-primary);
+        }
+
+        /* Hero */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 90vh;
+            background: url('https://via.placeholder.com/1200x800?text=Arreglos+Florales') center/cover no-repeat;
+            text-align: center;
+            padding: 0 2rem;
+            color: #fff;
+            position: relative;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.4);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            margin: 0.5rem 0;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin: 1rem 0 2rem 0;
+        }
+
+        .hero a.cta {
+            text-decoration: none;
+            color: #fff;
+            background-color: var(--color-primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .hero a.cta:hover {
+            background-color: var(--color-secondary);
+        }
+
+        /* Secciones principales */
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        section h2 {
+            text-align: center;
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--color-heading);
+        }
+
+        /* Catálogo / Tienda */
+        .catalogo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+            gap: 2rem;
+        }
+
+        .producto {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .producto img {
+            width: 100%;
+            height: auto;
+        }
+
+        .producto .info {
+            padding: 1rem;
+            flex: 1;
+        }
+
+        .producto h3 {
+            margin-top: 0;
+            font-size: 1.25rem;
+            font-family: var(--font-heading);
+            margin-bottom: 0.5rem;
+        }
+
+        .producto p {
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .producto .price {
+            font-weight: bold;
+            margin: 0.5rem 0;
+        }
+
+        .producto button {
+            margin-top: auto;
+            background-color: var(--color-primary);
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .producto button:hover {
+            background-color: var(--color-secondary);
+        }
+
+        /* Sobre Nosotros */
+        .sobre-nosotros {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .sobre-nosotros img {
+            max-width: 300px;
+            border-radius: 10px;
+        }
+
+        .sobre-nosotros p {
+            max-width: 700px;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        /* Testimonios */
+        .testimonios {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+            gap: 2rem;
+        }
+
+        .testimonial {
+            background-color: var(--color-accent);
+            border-radius: 5px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .testimonial p {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial h4 {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        /* Contacto */
+        .contacto-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .contacto-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contacto-form input, .contacto-form textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .contacto-form button {
+            background-color: var(--color-primary);
+            color: #fff;
+            border: none;
+            padding: 0.75rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+
+        .contacto-form button:hover {
+            background-color: var(--color-secondary);
+        }
+
+        .contact-info p, .contact-info a {
+            margin: 0.5rem 0;
+            line-height: 1.4;
+        }
+
+        .social-icons a {
+            margin-right: 0.5rem;
+            text-decoration: none;
+            font-weight: bold;
+            color: var(--color-primary);
+        }
+
+        /* Blog */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
+            gap: 2rem;
+        }
+
+        .blog-post {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            background-color: #fff;
+        }
+
+        .blog-post img {
+            width: 100%;
+            height: auto;
+        }
+
+        .blog-post .content {
+            padding: 1rem;
+        }
+
+        .blog-post h3 {
+            margin-top: 0;
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-post p {
+            line-height: 1.4;
+        }
+
+        /* Futuro Expansión */
+        .futuro {
+            text-align: center;
+        }
+
+        .futuro p {
+            max-width: 700px;
+            margin: 1rem auto;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--color-accent);
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        footer .insta-feed {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        footer .insta-feed img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        footer .newsletter {
+            margin-bottom: 1rem;
+        }
+
+        footer .newsletter input {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 0.5rem;
+        }
+
+        footer .newsletter button {
+            background-color: var(--color-primary);
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        footer .newsletter button:hover {
+            background-color: var(--color-secondary);
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        /* Responsive */
+        @media(max-width: 768px) {
+            .contacto-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Chat en vivo (Opcional) */
+        .chat-bubble {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            width: 50px;
+            height: 50px;
+            background-color: var(--color-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            z-index: 9999;
+        }
+
+        .chat-window {
+            position: fixed;
+            bottom: 70px;
+            right: 1rem;
+            width: 300px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 9999;
+        }
+
+        .chat-header {
+            background-color: var(--color-primary);
+            color: #fff;
+            padding: 0.75rem;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .chat-body {
+            flex: 1;
+            padding: 1rem;
+            font-size: 0.9rem;
+            overflow-y: auto;
+        }
+
+        .chat-footer {
+            display: flex;
+            border-top: 1px solid #ccc;
+        }
+
+        .chat-footer input {
+            flex: 1;
+            padding: 0.5rem;
+            border: none;
+        }
+
+        .chat-footer button {
+            background-color: var(--color-primary);
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+        }
+
+        .faq, .envios, .politicas {
+            font-size: 0.9rem;
+            margin-top: 2rem;
+            line-height: 1.5;
+        }
+
+        .faq h3, .envios h3, .politicas h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+
+    <!-- Scripts (placeholder) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const chatBubble = document.querySelector('.chat-bubble');
+            const chatWindow = document.querySelector('.chat-window');
+
+            chatBubble.addEventListener('click', () => {
+                chatWindow.style.display = chatWindow.style.display === 'flex' ? 'none' : 'flex';
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <a href="#inicio" class="logo">Floristería Everbloom</a>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#catalogo">Catálogo</a></li>
+                <li><a href="#sobrenosotros">Sobre Nosotros</a></li>
+                <li><a href="#testimonios">Testimonios</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#futuro">Futuro</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Inicio -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>Flores que Hablan Por Ti</h1>
+            <p>Arreglos florales artesanales, elegantes y románticos, entregados con puntualidad en Bogotá.</p>
+            <a href="#catalogo" class="cta">Ver Catálogo</a>
+        </div>
+    </section>
+
+    <!-- Catálogo / Tienda en Línea -->
+    <section id="catalogo">
+        <h2>Nuestro Catálogo</h2>
+
+        <div class="catalogo-grid">
+            <!-- Ejemplo de producto -->
+            <div class="producto">
+                <img src="https://via.placeholder.com/400x300?text=Flores+Naturales" alt="Flores Naturales">
+                <div class="info">
+                    <h3>Rosas Rojas Premium</h3>
+                    <p>Un arreglo clásico y elegante de rosas rojas frescas.</p>
+                    <p class="price">$50.000</p>
+                    <button>Añadir al Carrito</button>
+                </div>
+            </div>
+
+            <div class="producto">
+                <img src="https://via.placeholder.com/400x300?text=Flores+Eternas" alt="Flores Eternas">
+                <div class="info">
+                    <h3>Rosa Eterna en Cinta</h3>
+                    <p>Flor eterna hecha a mano con cinta, un detalle inolvidable.</p>
+                    <p class="price">$60.000</p>
+                    <button>Añadir al Carrito</button>
+                </div>
+            </div>
+
+            <div class="producto">
+                <img src="https://via.placeholder.com/400x300?text=Arreglo+Graduacion" alt="Arreglo Graduación">
+                <div class="info">
+                    <h3>Arreglo para Graduaciones</h3>
+                    <p>Celebra un logro especial con flores personalizadas.</p>
+                    <p class="price">$45.000</p>
+                    <button>Añadir al Carrito</button>
+                </div>
+            </div>
+
+            <div class="producto">
+                <img src="https://via.placeholder.com/400x300?text=Arreglo+Sorpresa" alt="Arreglo Sorpresa">
+                <div class="info">
+                    <h3>Arreglo Sorpresa</h3>
+                    <p>Envía un detalle sorpresa con flores y un mensaje personalizado.</p>
+                    <p class="price">$55.000</p>
+                    <button>Añadir al Carrito</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="envios">
+            <h3>Políticas de Envío y Entrega</h3>
+            <p>Ofrecemos entrega en Bogotá con puntualidad y cuidado. Pronto ampliaremos distribución a otras ciudades del país.</p>
+        </div>
+
+        <div class="politicas">
+            <h3>Formas de Pago Seguras</h3>
+            <p>Aceptamos tarjetas de crédito, débito y pagos en línea mediante pasarelas seguras. Tus datos están protegidos.</p>
+        </div>
+
+        <div class="faq">
+            <h3>Preguntas Frecuentes</h3>
+            <p><strong>¿Cómo cuidar mis flores?</strong> Sigue las recomendaciones de riego y mantenimiento que enviamos con tu arreglo.</p>
+            <p><strong>¿Puedo solicitar devoluciones?</strong> Si algo no cumple tus expectativas, contáctanos y lo resolveremos.</p>
+        </div>
+    </section>
+
+    <!-- Sobre Nosotros -->
+    <section id="sobrenosotros">
+        <h2>Sobre Nosotros</h2>
+        <div class="sobre-nosotros">
+            <img src="https://via.placeholder.com/300x300?text=Nuestro+Taller" alt="Foto del Taller">
+            <p>Floristería Everbloom nace de la pasión por las flores y la artesanía. Creemos en la elegancia, el romanticismo y la dedicación. Cada arreglo es hecho a mano con amor y cuidado, reflejando el compromiso con nuestros clientes y la puntualidad en cada entrega. Nuestro taller es un espacio creativo donde las flores naturales y eternas cobran vida, listas para transmitir emociones y recuerdos inolvidables.</p>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section id="testimonios">
+        <h2>Testimonios</h2>
+        <div class="testimonios">
+            <div class="testimonial">
+                <p>"El arreglo llegó a tiempo y las flores estaban preciosas. Mi novia quedó encantada."</p>
+                <h4>- Carlos P.</h4>
+            </div>
+            <div class="testimonial">
+                <p>"La rosa eterna es una obra de arte. Atención impecable y servicio de primera."</p>
+                <h4>- Andrea M.</h4>
+            </div>
+            <div class="testimonial">
+                <p>"Mi pedido fue muy fácil de realizar en línea, y el resultado fue mejor de lo esperado. ¡Recomendado!"</p>
+                <h4>- Juan D.</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto">
+        <h2>Contacto</h2>
+        <div class="contacto-grid">
+            <div class="contacto-form">
+                <input type="text" placeholder="Nombre" required>
+                <input type="email" placeholder="Correo" required>
+                <textarea placeholder="Mensaje" rows="5" required></textarea>
+                <button>Enviar</button>
+            </div>
+            <div class="contact-info">
+                <p><strong>Correo:</strong> info@everbloom.com</p>
+                <p><strong>WhatsApp:</strong> +57 300 000 0000</p>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com" target="_blank" rel="noopener">Instagram</a>
+                </div>
+                <p>Chat en Vivo (opcional, ver ícono en esquina)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog (opcional) -->
+    <section id="blog">
+        <h2>Blog</h2>
+        <div class="blog-grid">
+            <div class="blog-post">
+                <img src="https://via.placeholder.com/400x300?text=Cuidado+de+Flores" alt="Cuidado de Flores">
+                <div class="content">
+                    <h3>Consejos para Cuidar Tus Flores</h3>
+                    <p>Aprende las mejores prácticas para mantener tus arreglos frescos por más tiempo.</p>
+                </div>
+            </div>
+            <div class="blog-post">
+                <img src="https://via.placeholder.com/400x300?text=Tendencias+Decoracion" alt="Tendencias Decoración">
+                <div class="content">
+                    <h3>Tendencias en Decoración Floral</h3>
+                    <p>Conoce las últimas tendencias en arreglos florales para eventos y ocasiones especiales.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Futuro Expansión -->
+    <section id="futuro" class="futuro">
+        <h2>Futuras Expansiones</h2>
+        <p>Muy pronto ofreceremos cursos en línea y organizaremos eventos florales para que aprendas a crear tus propios arreglos y descubras el maravilloso mundo de las flores. ¡Mantente atento a nuestras novedades!</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="insta-feed">
+            <img src="https://via.placeholder.com/60x60?text=IG1" alt="IG Feed 1">
+            <img src="https://via.placeholder.com/60x60?text=IG2" alt="IG Feed 2">
+            <img src="https://via.placeholder.com/60x60?text=IG3" alt="IG Feed 3">
+        </div>
+
+        <div class="newsletter">
+            <input type="email" placeholder="Tu correo electrónico" required>
+            <button>Suscribirse</button>
+        </div>
+
+        <p>© 2024 Floristería Everbloom. Todos los derechos reservados.</p>
+        <p>Diseñado con amor en Bogotá, Colombia.</p>
+    </footer>
+
+    <!-- Chat en vivo -->
+    <div class="chat-bubble">💬</div>
+    <div class="chat-window">
+        <div class="chat-header">Chat en Vivo</div>
+        <div class="chat-body">
+            <p>¡Hola! ¿En qué podemos ayudarte hoy?</p>
+        </div>
+        <div class="chat-footer">
+            <input type="text" placeholder="Escribe tu mensaje..." />
+            <button>Enviar</button>
+        </div>
+    </div>
+
+</body>
+</html>
